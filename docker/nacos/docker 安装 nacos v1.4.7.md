@@ -84,7 +84,7 @@ cd /home/nacos/conf
 ​		docker cp 宿主机中要拷贝的文件名及其路径 容器名：要拷贝到容器里面对应的路径
 
 ```shell
-	docker cp /home/wzd/ nacos:/home/nacos/conf/application.properties 
+	docker cp /home/wzd/application.properties nacos:/home/nacos/conf/application.properties 
 ```
 
 修改 application.properties,内容如下
