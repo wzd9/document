@@ -26,6 +26,20 @@ nacos/nacos-server
 
 ​	这个命令会启动一个名为 nacos 的容器，并将其绑定到物理机的 8848 端口。同时，它还会将容器添加到之前创建的 nacos_network 容器网络中，并设置容器模式为 standalone（单机）。
 
+```shell
+docker run --name nacos2.2.0 -d \
+-p 8848:8848 \
+-p 9848:9848 \
+--network nacos_network \
+-e MODE=standalone \
+nacos/nacos-server:v2.2.0
+```
+
+**环境：Nacos版本 2.2.0，docker镜像，centos8
+问题描述：页面访问正常，curl -X POST正常，但是使用Java SDK集成发布失败
+原因定位：跟踪源码，异常描述： Client not connected,current status:STARTING，客户端gRPC无法和服务端创建链接，在Nacos2.X版本中，增加了gRPC通信端口，需要由docker一并映射出来，否则就会出现无法初始化连接。
+解决方案：在docker容器中映射9848端口**
+
 ## 4、访问 Nacos Web 控制台
 
 启动完 Nacos 容器后，就可以通过 http://虚拟机IP:8848/nacos 访问 Nacos Web 控制台了。在控制台上，可以进行服务注册、配置管理和服务发现等操作
