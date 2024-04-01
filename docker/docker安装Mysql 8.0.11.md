@@ -33,7 +33,8 @@ init_connect="SET NAMES utf8mb4"
 skip-character-set-client-handshake
 default_authentication_plugin=mysql_native_password
 sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
-```
+#mysql不区分表名大小写
+lower_case_table_names=1
 
 ## 4、创建容器
 
