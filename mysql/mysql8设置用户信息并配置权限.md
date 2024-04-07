@@ -43,6 +43,12 @@ create user 'admin'@'localhost' identified by 'admin123456';
 grant all privileges on *.* to 'admin'@'localhost';
 # 刷新授权才会生效
 flush privileges;
+
+# wzd_mianxi数据库创建用户wzd,并赋予权限
+create user 'wzd'@'%' identified by '123456';
+# 注意，数据库名不能设计成wzd-mianxi，否则授权会报错
+grant all privileges on wzd_mianxi.* to 'wzd'@'%';
+flush privileges;
 ```
 
 ## 2.3、创建外网可访问的用户
